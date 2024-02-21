@@ -21,4 +21,4 @@ See ads_api.yaml for the API specification used.
 ### arXiv Q&A API (Xplorer)
 Xplorer is developed by Tom Tumiel and is a semantic search and Q&A system for arXiv papers. 
 See [Xplorer Website & API](https://arxivxplorer.com/).
-Or try out the [Xplorer GPT](https://arxivxplorer.com/plugin#:~:text=for%20free%20now!-,Open%20the%20arXiv%20Xplorer%20GPT,-Available%20Functions)
+Or try out the [Xplorer GPT](https://chat.openai.com/g/g-WeT9tE7SR-xplorer)
