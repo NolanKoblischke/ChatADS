@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+  title: ADS Developer API
+  description: Access the ADS data holdings including search, metrics, export, and more, using the ADS Developer API.
+  version: 1.0.0
+servers:
+  - url: https://api.adsabs.harvard.edu/v1
+    description: ADS API server
+paths:
+  /search/query:
+    get:
+      operationId: searchQuery
+      summary: Search the ADS database
+      description: Allows searching the ADS database for records matching the query parameters.
+      parameters:
+        - name: q
+          in: query
+          required: true
+          description: Search query string, URL-encoded.
+          schema:
+            type: string
+        - name: fl
+          in: query
+          required: false
+          description: Comma-separated list of fields to return in the response.
+          schema:
+            type: string
+        - name: rows
+          in: query
+          required: false
+          description: Number of results to return.
+          schema:
+            type: integer
+        - name: start
+          in: query
+          required: false
+          description: Starting index for the search results, for pagination.
+          schema:
+            type: integer
+        - name: sort
+          in: query
+          required: false
+          description: Formatted as 'field direction' where direction is asc/desc.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful search operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  responseHeader:
+                    type: object
+                    properties:
+                      status:
+                        type: integer
+                      QTime:
+                        type: integer
+                  response:
+                    type: object
+                    properties:
+                      numFound:
+                        type: integer
+                      start:
+                        type: integer
+                      docs:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+      security:
+        - ApiKeyAuth: []
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Use the API key obtained from ADS. Prefix with 'Bearer ' followed by your token.
+  schemas: {}
